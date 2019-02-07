@@ -55,6 +55,27 @@ ansible-playbook -i production site.yml
 ```
 
 or
+
 ``` bash
 ansible-playbook -i staging site.yml
+```
+
+Run remote commands:
+
+``` bash
+ansible boston -i production -m ping
+
+ansible all -i production -m ping
+```
+
+
+And there are some useful commands to know:
+
+
+``` bash
+# confirm what task names would be run if I ran this command and said "just ntp tasks"
+ansible-playbook -i production webservers.yml --tags ntp --list-tasks
+
+# confirm what hostnames might be communicated with if I said "limit to boston"
+ansible-playbook -i production webservers.yml --limit boston --list-hosts
 ```
