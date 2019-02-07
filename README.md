@@ -48,4 +48,13 @@ This is what you get:
 └── staging                 # staging inventory file
 ```
 
-Run any play
+Run the main playbook:
+
+``` bash
+ansible-playbook -i production site.yml
+```
+
+or
+``` bash
+ansible-playbook -i staging site.yml
+```
