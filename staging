@@ -1,0 +1,40 @@
+# inventory file for staging
+
+[atlanta-webservers]
+www-atl-1-stag.example.com
+www-atl-2-stag.example.com
+
+[boston-webservers]
+www-bos-1-stag.example.com
+www-bos-2-stag.example.com
+
+[atlanta-dbservers]
+db-atl-1-stag.example.com
+db-atl-2-stag.example.com
+
+[boston-dbservers]
+db-bos-1-stag.example.com
+
+# webservers in all geos
+[webservers:children]
+atlanta-webservers
+boston-webservers
+
+# dbservers in all geos
+[dbservers:children]
+atlanta-dbservers
+boston-dbservers
+
+# everything in the atlanta geo
+[atlanta:children]
+atlanta-webservers
+atlanta-dbservers
+
+# everything in the boston geo
+[boston:children]
+boston-webservers
+boston-dbservers
+
+# Variables that will be applied to all servers
+[multi:vars]
+ansible_ssh_user=vagrant
